@@ -48,7 +48,14 @@ void PrintArray(string[] array)
 // Console.WriteLine("Введите строку ");
 // string str = Console.ReadLine();
 
-string[] strArray = new string[4] { "Hello", "2", "world", ":-)" };
+// Тестирование по первому набору данных +
+// string[] strArray = new string[4] { "Hello", "2", "world", ":-)" };
+
+// Тестирование по второму набору данных +
+// string[] strArray = new string[4] { "1234", "1567", "-2", "computer science" };
+
+// Тестирование по третьему набору данных
+string[] strArray = new string[3] { "Russia", "Denmark", "Kazan" };
 
 // Проверить, что выводит на печать 
 // Console.WriteLine(strArray);
