@@ -13,10 +13,10 @@
 
 // Поле методов
 
+// 1 
 // Метод перевода строки в массив символов 
 // на основе символов строки (тип string) формируем массив символов (тип char[]). 
-// метод строки ToCharArray() можно использовать, но мы тут его не использовали, т.к. ещё не умеем.
-// по схеме “Hello!” => [‘H’, ‘e’, ‘l’, ‘l’, ‘o’, ‘!’ ]
+// по схеме “World” => [‘W’, ‘o’, ‘r’, ‘l’, ‘d’]
 char[] StringToCharArray(string s)
 {
     char[] strArray = new char[s.Length];
@@ -27,26 +27,25 @@ char[] StringToCharArray(string s)
     return strArray;
 }
 
+// 2
 // Метод печати массива строк
 void PrintArray(string[] array)
 {
     Console.Write("[");
-    for (int i = 0; i < array.Length; i++)
+    for (int j = 0; j < array.Length; j++)
     {
-        if (i < array.Length - 1)
-            Console.Write($"{array[i]}, ");
+        if (j < array.Length - 1)
+            Console.Write($"\"{array[j]}\", ");
         else
-            Console.Write($"{array[i]}");
+            Console.Write($"\"{array[j]}\"");
     }
     Console.WriteLine("]");
 }
 
-// задаем массив 
+// Поле программы 
 
-// получение массива строк от пользователя
-// ввод одной сторки
-// Console.WriteLine("Введите строку ");
-// string str = Console.ReadLine();
+
+// Тестирование по готовому набору данных
 
 // Тестирование по первому набору данных +
 // string[] strArray = new string[4] { "Hello", "2", "world", ":-)" };
@@ -54,42 +53,53 @@ void PrintArray(string[] array)
 // Тестирование по второму набору данных +
 // string[] strArray = new string[4] { "1234", "1567", "-2", "computer science" };
 
-// Тестирование по третьему набору данных
-string[] strArray = new string[3] { "Russia", "Denmark", "Kazan" };
+// Тестирование по третьему набору данных +
+// string[] strArray = new string[3] { "Russia", "Denmark", "Kazan" };
 
-// Проверить, что выводит на печать 
-// Console.WriteLine(strArray);
+// Ввод массива строк с клавиатуры
+// ввод размера массива строк
+Console.Write("Введите размер массива строк: ");
+int lengthArray = Convert.ToInt32(Console.ReadLine());
 
-// берем по порядку строки из массива строк
-int numThreeString = 0;
-for (int i = 0; i < strArray.Length; i++)
+// ввод строк массива с клавиатуры
+string[] strArray = new string[lengthArray];
+Console.WriteLine("Поочередно введите строки массива строк: ");
+for (int k = 0; k < lengthArray; k++)
 {
-    // string str = strArray[i]; попытка упростить запись строки ниже
-    int numString = StringToCharArray(strArray[i]).Length;
+    strArray[k] = Convert.ToString(Console.ReadLine());
+}
+
+// определяем количество элементов массива с длиной строки менее или равной трем
+int numThreeString = 0;
+for (int l = 0; l < strArray.Length; l++)
+{
+    int numString = StringToCharArray(strArray[l]).Length;
     if (numString <= 3)
     {
         numThreeString++;
     }
 }
-// объявляем массив со строками длиной менее трех символов
+
+// объявляем массив, содержащий только строки длиной менее или равной трем
 string[] strThreeArray = new string[numThreeString];
 
-// заполняем массив strThreeArray
-int k = 0;
-for (int j = 0; j < strArray.Length; j++)
+// заполняем массив strThreeArray строками длиной менее или равной трем
+int m = 0;
+for (int n = 0; n < strArray.Length; n++)
 {
-    int numString = StringToCharArray(strArray[j]).Length;
+    int numString = StringToCharArray(strArray[n]).Length;
     if (numString <= 3)
     {
-        strThreeArray[k] = strArray[j];
-        k++;
+        strThreeArray[m] = strArray[n];
+        m++;
     }
 }
 
-// печать массива
-
+// Печатаем исходный массив
 PrintArray(strArray);
 Console.WriteLine(); // Печать пустой строки
+
+// Печатаем массив строк с длиной менее или равной трем
 PrintArray(strThreeArray);
 
-// Final
+// Конец
